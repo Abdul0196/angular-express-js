@@ -1,0 +1,21 @@
+<p>NOTE: If you're superadmin you can access this private api data.</p>
+<p>Try Using dummy usernames mentioned Below.</p>
+<ul>
+    <li><b>superadmin</b> - this can access private api data</li>
+    <li><b>justuser</b> - this won't be able to access api.</li>
+</ul>
+
+<form #user="ngForm" (ngSubmit)="getPrivateApi(user.value)">
+    <input type="text" name="username" ngModel placeholder="superadmin/justuser"> <br><br>
+    <input type="password" name="password" ngModel placeholder="123456"> <br><br>
+    <button type="submit">Submit</button>&nbsp;&nbsp;&nbsp;
+    <p>you are logged in as <b>{{name}}</b></p>
+</form>
+<h2>api returned data </h2>
+<div *ngIf="isadmin == 1; else notAdmin">
+    <button (click)="callingPrivateApi()">Get Private Api data once logged in.</button>
+    {{ text }}
+</div>
+<ng-template #notAdmin>
+    {{ text }}
+</ng-template>
